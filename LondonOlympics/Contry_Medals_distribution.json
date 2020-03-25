@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/colmr/vis_class/master/London2012Vega.csv",
+    "format": {"type": "csv"}
+  },
+  "description": "The Visualization is showing country-wise medal distribution(greater then 0) on gender basis sorted from maximum to minimum medals in olympic 2012.",
+  
+  "transform": [{"filter": "datum.Total > 0"}],
+  
+  "mark": "bar",
+  
+  "encoding": {
+    "x": {"field": "Total", "type": "quantitative", "aggregate": "sum"},
+    "y": {"field": "Country", "type": "nominal", "sort": "-x"},
+    "color": {
+      "field": "Sex",
+      "type": "nominal",
+      "scale": {"domain": ["F", "M"]}
+    },
+  
+    "tooltip": [
+      {"field": "Gold", "type": "quantitative", "aggregate": "sum"},
+      {"field": "Silver", "type": "quantitative", "aggregate": "sum"},
+      {"field": "Bronze", "type": "quantitative", "aggregate": "sum"}
+    ]
+  
+  },
+  "title": {"text": "Olympic Athletes - Height vs Weight", "anchor": "middle"},
+  "width": 600,
+  "height": 600,
+  "config": {"legend": {"orient": "bottom-right"}}
+}

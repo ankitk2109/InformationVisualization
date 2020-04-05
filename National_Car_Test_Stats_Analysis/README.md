@@ -1,6 +1,6 @@
 ## NCT Stats Analysis using VEGA-LITE
 
-__See the code in VEGA-LITE: Open file in the browser and navigate to the graph. On the top right corner there are three dots, click on the button and open the graph in Vega-Lite editor.__
+__To see the code in VEGA-LITE: Open file in the browser and navigate to the graph. On the top right corner there are three dots, click on the button and open the graph in Vega-Lite editor.__
 
 __1. Failure Percentage Vs Number of Unit Tested:__
 

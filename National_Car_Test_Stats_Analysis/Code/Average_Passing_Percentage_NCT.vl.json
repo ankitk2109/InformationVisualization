@@ -1,0 +1,115 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ankitk2109/InformationVisualization/master/NCT/Data/Avg_Pass_Perc.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "width": 1000,
+  "height": 500,
+  "title": {
+    "text": "Average Passing Percentage of Vehicle Manufactrurers Across Years ",
+    "anchor": "middle",
+    "fontSize": 20
+  },
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "titlePadding": 8
+    },
+    "legend": {
+      "orient": "right",
+      "titleFontSize": 14,
+      "labelFontSize": 10,
+      "padding": 3
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.Total_Tests>=50"
+    },
+    {
+      "filter": {
+        "field": "Maker",
+        "oneOf": [
+          "TOYOTA",
+          "OPEL",
+          "FORD",
+          "NISSAN",
+          "VOLKSWAGEN"
+        ]
+      }
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "tooltip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "axis": {
+            "labelAngle": 0,
+            "title": "Years"
+          }
+        },
+        "y": {
+          "aggregate": "mean",
+          "field": "Avg_Pass_Percentage",
+          "type": "quantitative",
+          "axis": {
+            "title": "Average Passing Percentage."
+          },
+          "scale": {
+            "zero": false
+          }
+        },
+        "color": {
+          "field": "Maker",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "tooltip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "axis": {
+            "labelAngle": 0,
+            "title": "Years"
+          }
+        },
+        "y": {
+          "aggregate": "median",
+          "field": "Avg_Pass_Percentage",
+          "type": "quantitative",
+          "axis": {
+            "title": "Average Passing Percentage."
+          },
+          "scale": {
+            "zero": false
+          }
+        },
+        "color": {
+          "field": "Maker",
+          "type": "nominal"
+        },
+        "opacity": {
+          "value": 0.2
+        }
+      }
+    }
+  ]
+}

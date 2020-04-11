@@ -1,0 +1,77 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": {
+    "text": "Major Failure Areas of Top 5 Car Makers",
+    "anchor": "middle",
+    "fontSize": 20
+  },
+  "repeat": [
+    "WheelTyres_Failure_Perc",
+    "Brake_Failure_Perc",
+    "Suspension_Failure_Perc",
+    "Emmissions_Failure_Perc",
+    "Light_Failure_Perc",
+    "SafetyEquipment_Failure_Perc"
+  ],
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "titlePadding": 8
+    },
+    "legend": {
+      "orient": "right",
+      "titleFontSize": 14,
+      "labelFontSize": 10
+    }
+  },
+  "columns": 3,
+  "transform": [
+    {
+      "filter": "datum.TotalTest>=80000"
+    }
+  ],
+  "spec": {
+    "data": {
+      "url": "https://raw.githubusercontent.com/ankitk2109/InformationVisualization/master/NCT/Data/Fail_Parameters_Perc.csv"
+    },
+    "mark": {
+      "type": "bar",
+      "tooltip": true
+    },
+    "width": 250,
+    "height": 220,
+    "encoding": {
+      "x": {
+        "field": "Makers",
+        "type": "nominal",
+        "scale": {
+          "zero": false
+        },
+        "axis": {
+          "title": "Car Makers",
+          "labelAngle": -45,
+          "labelFontSize": 10,
+          "titleFontSize": 12
+        }
+      },
+      "y": {
+        "field": {
+          "repeat": "repeat"
+        },
+        "type": "quantitative",
+        "scale": {
+          "zero": false
+        },
+        "axis": {
+          "labelFontSize": 10,
+          "titleFontSize": 12
+        }
+      },
+      "color": {
+        "field": "Makers",
+        "type": "nominal"
+      }
+    }
+  }
+}

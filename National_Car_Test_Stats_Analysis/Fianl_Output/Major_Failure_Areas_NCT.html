@@ -1,0 +1,177 @@
+<html>
+   <head>
+      <title>Major Failure Areas</title>
+      <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+      <style>
+         body {
+         font-family: sans-serif;
+         }
+      </style>
+   </head>
+   <body>
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+               <td style="vertical-align: top;"><strong>Dataset description:</strong></td>
+               <td style="vertical-align: top;"><b> National Car Test(NCT) Failure Rates:</b>
+                  <li>
+                  The overall vehicles failure rates for the National Car Testing service in 2016 is summarised in the dataset taken. There are several features that determine the overall failure of the car model. NCT is aimed primarily at improving road safety and enhancing environmental protection by providing an independent assessment of the roadworthiness and emissions level of cars at regular intervals throughout their life.
+                </li>
+                 <li>
+                  NCT test results also helps car buyers choose wisely.
+                </li>
+                <li>Periodic roadworthiness testing of passenger cars and commercial vehicles is mandatory in all Member States of the European Community. NCTS is required to provide very high standards of customer service, in line with acceptable performance standards.</li>
+                <li>The Dataset contains 36 features and 8165 rows. Total 112 car manufacturing companies. Below are the description of essential features:
+                  <ol> 
+                  <li>VehicleMake: Car manufacturing company.</li>
+                  <li>Vehicle Model: Model of the car.</li>
+                  <li>Year Of Birth: First release of the car model.</li>
+                  <li>Total: Total number of tests that have been done on a particular car model.</li>
+                  <li>Pass: Number of tests passed.</li>
+                  <li>Vehicle and Safety Equipment: Tests failed for Vehicle and Safety Equipment.</li>
+                  <li>Lighting and Electrical: Tests failed for Lighting and Electrical.</li>
+                  <li>Steering and Suspension: Tests failed for Steering and Suspension.</li>
+                  <li>Braking Equipment: Tests failed for Braking Equipment</li>
+                  <li>Wheels and Tyres: Tests failed for wheel and tyres.</li>
+                  <li>Engine, Noise and Exhaust: Tests failed for engine, noise and exhaust.</li>
+                  <li>Side Slip Test: Tests failed for side slip testing.</li>
+                  <li>Suspension Test: Tests failed for suspension testing.</li>
+                  <li>Brake Test: Tests failed for brake testing.</li>
+                  <li>Emmissions: Tests failed for car emmission testing.</li>
+                  </ol>
+                </li>
+                </ul>
+                <b>For the graph below a new processed, filtered and aggregated subset stored in a file Fail_Parameters_Perc.csv is used.</b>
+                The new compiled dataset contais 14 rows and all car maker as columns.
+                <ul>
+               </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Initial questions</strong></td>
+               <td style="vertical-align: top;">Find out the major failure areas for top 5 car manufactures. 
+                <br>Find which car maker has least number of tests failed?
+                <br>Which car manufacturer has minimum saftey test passed?
+                <br>Manufacturer with the most emission failures?</br>
+                </td>
+            </tr>
+         </tbody>
+      </table>
+      <hr />
+      <div id="vis"></div>
+      <hr />
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+               <td style="vertical-align: top;">
+                A multiple bar graphs demonstrating the failure percentage of top five car manufactures in six major areas such as wheel and tyre, brake, suspension, emission, light and safety equipments.
+                <li>The top five manufacture are decided based on the number of tests they have undergone through. So the manufactures considered are Ford, Nissan, Opel, Toyota & Volkswagen.</li>
+               </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Insight:</strong></td>
+               <td style="vertical-align: top;"><b>Following insights can be drawn from the graph above:</b>
+                <li>By looking at the graph it is evident that Nissan has least number of test failed in each area.</li>
+                <li>In terms of emission failure percentage, Volkswagen is at the peak with nearly 30% failures.</li>
+                <li>Volkswagen has performed worst in terms of safety from rest of the other manufactures with around 42% tests failed. On the other hand, Nissan performed best in terms of safety with only around 28% tests failed.</li>
+                <li>Cumulatively Ford has the maximum average rate of failure in all major areas. Opel has nearly similar average failure rate to that of Ford.</li>
+                <li>Overall, least number of tests are failed in Emmissions whereas, most number of tests are failed in Wheel & Tyres.</li>
+               </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Design considerations</strong></td>
+               <td style="vertical-align: top;"><b>Following are the design considerations</b>:
+                <li>In order to understand the design of this plot, the encodings for the X axis contain the Car Makers which is a ordinal attribute.
+                <li>Encoding of Y axis consists of various failure area(Wheel&Tyre, Brake, Light, Suspension, Safety & Emmission) of the car test which are quantitative attributes.</li>
+                <li> Y axis in each bar graph shows the percentage(%) of failure by each car maker in that area.
+                <li>Total six bar graphs are plotted where each graph depicts one major failure area for all the car makers.</li>
+                <li>The X axis encodings are color coded which helps to uniquely idenfies a car maker.</li>
+                <br><b>Alternatives</b></br>
+                <ol>
+                  <li><b>Stacked Bar Chart:</b> Stacked bar are typically used to show how large categories is divided into subcategories. In our case, we could have created a single bar having color codes for each type of car maker.</li> 
+                    <b> Disadvantage:</b>
+                    <ul>
+                      <li>It is harder to read the segments for each bar.</li>
+                      <li>Comparing each segment to other is more difficult, as they're not aligned on a common baseline</li>
+                    </ul>
+                  <li><b>Line Chart:</b>It is basically used to show trends revealed by data represented graphically using lines.</li>
+                    <b> Disadvantages:</b>
+                    <ul>
+                      <li>With too many car makers there would be many lines and the information becomes cluttered and hard to understand.</li>
+                      <li>Also it is suitable for understanding the trends not for finding the exact values.</li>
+                    </ul>
+                  <li><b>Our Design Advantages:</b></li>
+                  <ul>
+                      <li>Information is clearly visible.</li>
+                      <li>Comparing failure percentage by each area is easy as they follow the same baseline.</li>
+                  </ul>
+               </ol>
+                </td>
+            </tr>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Data filtering and transformation:&nbsp;</strong></td>
+               <td style="vertical-align: top;"><b>Following filtering and transformations are applied on the data:</b>
+               <li>The data is transformed to group car maker field together as they were distributed based on model and yearOfBirth.</li>
+               <li>There were number of records that didn't registered any of the tests so removed those from the data.</li>
+               <li>A calculated field to store the average failure percentage of various failure aspects (such as Suspension, brake, light etc) grouped by car makers.</li>
+               <li> The summarized data after all the Pre-processing is stored in a new dataset and is being provided for the further analysis.</li>
+               <li>Filtered the car makers on vegalite to keeping only those that have undergone more than 80K testing over all the years.</li>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <script type="text/javascript">
+        var yourVlSpec = 
+        {
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": {
+    "text": "Major Failure Areas of Top 5 Car Makers",
+    "anchor": "middle",
+    "fontSize": 20
+  },
+  "repeat": [
+    "WheelTyres_Failure_Perc",
+    "Brake_Failure_Perc",
+    "Suspension_Failure_Perc",
+    "Emmissions_Failure_Perc",
+    "Light_Failure_Perc",
+    "SafetyEquipment_Failure_Perc"
+  ],
+  "config": {
+    "axis": {"labelFontSize": 12, "titleFontSize": 14, "titlePadding": 8},
+    "legend": {"orient": "right", "titleFontSize": 14, "labelFontSize": 10}
+  },
+  "columns": 3,
+  "transform": [
+    {"filter": "datum.TotalTest>=80000"}
+  ],
+  "spec": {
+    "data": {
+      "url": "https://raw.githubusercontent.com/ankitk2109/InformationVisualization/master/NCT/Data/Fail_Parameters_Perc.csv"
+    },
+    "mark": {"type": "bar", "tooltip": true},
+    "width": 250,
+    "height": 220,
+    "encoding": {
+      "x": {
+        "field": "Makers",
+        "type": "nominal",
+        "scale": {"zero": false},
+        "axis": {"title": "Car Makers", "labelAngle": -45, "labelFontSize":10,"titleFontSize": 12}
+      },
+      "y": {
+        "field": {"repeat": "repeat"},
+        "type": "quantitative",
+        "scale": {"zero": false},
+        "axis": {"labelFontSize":10,"titleFontSize": 12}
+      },
+      
+      "color": {"field": "Makers", "type": "nominal"}
+    }
+  }
+}
+        vegaEmbed("#vis", yourVlSpec);
+      </script>
+   </body>
+</html>

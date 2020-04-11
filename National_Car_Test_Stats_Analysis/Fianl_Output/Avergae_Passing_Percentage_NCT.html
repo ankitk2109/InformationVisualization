@@ -1,0 +1,208 @@
+<html>
+   <head>
+      <title>Avergae Passing Percentage</title>
+      <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+      <style>
+         body {
+         font-family: sans-serif;
+         }
+      </style>
+   </head>
+   <body>
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="vertical-align: top;"><strong>Dataset description:</strong></td>
+               <td style="vertical-align: top;"><b> National Car Test(NCT) Failure Rates:</b>
+                  <li>
+                  The overall vehicles failure rates for the National Car Testing service in 2016 is summarised in the dataset taken. There are several features that determine the overall failure of the car model. NCT is aimed primarily at improving road safety and enhancing environmental protection by providing an independent assessment of the roadworthiness and emissions level of cars at regular intervals throughout their life.
+                </li>
+                 <li>
+                  NCT test results also helps car buyers choose wisely.
+                </li>
+                <li>Periodic roadworthiness testing of passenger cars and commercial vehicles is mandatory in all Member States of the European Community. NCTS is required to provide very high standards of customer service, in line with acceptable performance standards.</li>
+                <li>The Initial dataset contains 36 features and 8165 rows. Total 112 car manufacturing companies. Below are the description of essential features:
+                  <ol> 
+                  <li>VehicleMake: Car manufacturing company.</li>
+                  <li>Vehicle Model: Model of the car.</li>
+                  <li>Year Of Birth: First release of the car model.</li>
+                  <li>Total: Total number of tests that have been done on a particular car model.</li>
+                  <li>Pass: Number of tests passed.</li>
+                  <li>Vehicle and Safety Equipment: Tests failed for Vehicle and Safety Equipment.</li>
+                  <li>Lighting and Electrical: Tests failed for Lighting and Electrical.</li>
+                  <li>Steering and Suspension: Tests failed for Steering and Suspension.</li>
+                  <li>Braking Equipment: Tests failed for Braking Equipment</li>
+                  <li>Wheels and Tyres: Tests failed for wheel and tyres.</li>
+                  <li>Engine, Noise and Exhaust: Tests failed for engine, noise and exhaust.</li>
+                  <li>Side Slip Test: Tests failed for side slip testing.</li>
+                  <li>Suspension Test: Tests failed for suspension testing.</li>
+                  <li>Brake Test: Tests failed for brake testing.</li>
+                  <li>Emmissions: Tests failed for car emmission testing.</li>
+                  </ol>
+                </li>
+                </ul>
+                <b>For the graph below a new processed, filtered and aggregated subset stored in a file Avg_Pass_Perc.csv is used.</b>
+                The new compiled dataset contais 744 rows and 4 columns. Below are the column details:
+                <ul>
+                  <li>Maker: The car manufacturing company</li>
+                  <li>Year: The year in which the car first release.</li>
+                  <li>Average Passing Percentage: The average percentage of passing the test by car maker in each year.</li>
+                  <li>Total Tests: Number of tests performed in each year on different car makers</li>
+                </ul>
+
+               </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Initial questions</strong></td>
+               <td style="vertical-align: top;">Which company has the heighest average passing percentage over the years? 
+                <br>What is the overall gowth trend of the companies over 15 year?
+                <br>Which maker has least passing percentage from rest of the car makers?
+                <br>Which manufacturer has maximum fall in average passing percentage then previous year?
+                </td>
+            </tr>
+         </tbody>
+      </table>
+      <hr />
+      <div id="vis"></div>
+      <hr />
+      <table style="width: 850px;" cellspacing="5" cellpadding="5">
+         <tbody>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Description:&nbsp;</strong></td>
+               <td style="vertical-align: top;">
+               A line graph depicting the trend of average passing percentage of top car manufactures starting from 2001 till 2015 is plotted over here. </br>
+               The above graph depicts a number of things: <br>
+               <li> It was difficult to plot all the manufactures hence only top makers above a passing percentage w.r.t number of tests(above certain threshold) are taken.
+               </li> 
+               </td>
+            </tr>
+
+            <tr>
+               <td style="vertical-align: top;"><strong>Insight:</strong></td>
+               <td style="vertical-align: top;"><b>Following insights can be drawn from the graph above:</b>
+                <li>Overall all the makers show an increasing trend in terms of passing percentage.</li>
+                <li>By looking at the graph it is evident that Toyota has passed most tests over the years.</li>
+                <li>From the trend it can be observed that Ford has lowest passing percentage.</li>
+                <li>In 2014 Ford showed the maximum decline from 85% to 65% and Volkswagen showed a decline of about 15% i,e from 87% to 72%. Hence Ford showed maximum fall in average passing percentage from the previous year.</li>
+                <li>Most car manufactures show a dip in year 2006 except Toyota, which continues to show a steady increase.</li>
+                <li>After 2006, Opel shows steap increase in passing percentage until from 40% in 2006 to 80% in 2012.</li>
+                <li>Opel and Nissan didn't took the NCT test in 2014 and 2015.</li>
+               </td>
+            </tr>
+            <tr>
+               <td style="vertical-align: top;"><strong>Design considerations</strong></td>
+               <td style="vertical-align: top;"><b>Following are the design considerations</b>:
+                <li>To understand the design of the above plot, the encodings for the X axis contain the years from 2001 to 2015 which are a nominal attribute.
+                <li>Encoding of Y axis consists average passing percentage of each car manufacturer in each year from 2001 to 2015.</li>
+                <li>The lines in the plot are color coded and each lines denotes a single car manufacturer passing percentage of car test.</li>
+                <br><b>Alternatives</b></br>
+                <ol>
+                  <li><b>Bubble Chart:</b> Bubble chart is useful to show relation between numeric variables. The size of the bubble denotes the intensity of the point. Mostly larger the bubble more number of observation at that point.</li> 
+                    <b> Disadvantage:</b>
+                    <ul>
+                      <li>It is harder to read the chart when there are too many bubbles.</li>
+                      <li>Clear trend is difficult to visualize</li>
+                    </ul>
+                  <li><b>Bar Chart:</b>Typically used to plot categorical data.</li>
+                    <b> Disadvantages:</b>
+                    <ul>
+                      <li>Bar chart do not show relationships between activities.</li>
+                    </ul>
+                  <li><b>Our Design Advantages:</b></li>
+                  <ul>
+                      <li>It clearly depicts relation and trends between average passing percentage of car manufacturers over the years .</li>
+                  </ul>
+               </ol>
+                </td>
+            </tr>
+            <tr>
+               <td style="width: 200px; vertical-align: top;"><strong>Data filtering and transformation:&nbsp;</strong></td>
+               <td style="vertical-align: top;"><b>Following filtering and transformations are applied on the data:</b>
+               <li>The data is transformed so as to group makers field together and generate a new dataset consisting a new feature called average passing percentage, maker, year and total tests.</li>
+               <li>There were number of records that didn't registered any of the test results hence removed those from the data.</li>
+               <li>To generate the new column. Firstly we have to group data by makers. After that collect models year wise and calculate average percentage.</li>
+               <li> The summarized data after all the Pre-processing is stored in a new dataset and is being provided for the further analysis.</li>
+               <li>Filtered the car makers on vegalite to keeping only those that have undergone more than 50 testing over all the years.</li>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <script type="text/javascript">
+        var yourVlSpec = 
+ {
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ankitk2109/InformationVisualization/master/NCT/Data/Avg_Pass_Perc.csv",
+    "format": {"type": "csv"}
+  },
+  "width": 1000,
+  "height": 500,
+  "title": {
+    "text": "Average Passing Percentage of Vehicle Manufactrurers Across Years ",
+    "anchor": "middle",
+    "fontSize": 20
+  },
+  "config": {
+    "axis": {"labelFontSize": 12, "titleFontSize": 14, "titlePadding": 8},
+    "legend": {
+      "orient": "right",
+      "titleFontSize": 14,
+      "labelFontSize": 10,
+      "padding": 3
+    }
+  },
+  "transform": [
+    {"filter": "datum.Total_Tests>=50"},
+    {
+      "filter": {
+        "field": "Maker",
+        "oneOf": ["TOYOTA", "OPEL", "FORD", "NISSAN", "VOLKSWAGEN"]
+      }
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "line", "point": true, "tooltip": true},
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "axis": {"labelAngle": 0, "title": "Years"}
+        },
+        "y": {
+          "aggregate": "mean",
+          "field": "Avg_Pass_Percentage",
+          "type": "quantitative",
+          "axis": {"title": "Average Passing Percentage."},
+          "scale": {"zero": false}
+        },
+        "color": {"field": "Maker", "type": "nominal"}
+      }
+    },
+    {
+      "mark": {"type": "line", "point": true, "tooltip": true},
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "axis": {"labelAngle": 0, "title": "Years"}
+        },
+        "y": {
+          "aggregate": "median",
+          "field": "Avg_Pass_Percentage",
+          "type": "quantitative",
+          "axis": {"title": "Average Passing Percentage."},
+          "scale": {"zero": false}
+        },
+        "color": {"field": "Maker", "type": "nominal"},
+        "opacity": {"value": 0.2}
+      }
+    }    
+  ]
+}
+        vegaEmbed("#vis", yourVlSpec);
+      </script>
+   </body>
+</html>

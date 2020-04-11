@@ -1,0 +1,102 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ankitk2109/InformationVisualization/master/NCT/Data/TotalTest_FailPercentage_Years.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "title": {
+    "text": "Failure(%) Vs Total Tests Over the Years ",
+    "anchor": "middle",
+    "fontSize": 20
+  },
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "titlePadding": 8
+    },
+    "legend": {
+      "orient": "right",
+      "labelFontSize": 10,
+      "padding": 3
+    }
+  },
+  "width": 700,
+  "height": 500,
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "nominal",
+      "scale": {
+        "zero": false
+      },
+      "axis": {
+        "title": "Year Registered",
+        "titleFontSize": 14,
+        "labelAngle": 0,
+        "labelFontSize": 14
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "interpolate": "monotone",
+        "tooltip": true
+      },
+      "encoding": {
+        "y": {
+          "field": "Total_Tests",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          },
+          "axis": {
+            "titlePadding": 8,
+            "titleColor": "#5574a1f3",
+            "title": "Units Tested",
+            "titleFontSize": 14,
+            "labelAngle": 0,
+            "labelFontSize": 12
+          }
+        },
+        "size": {
+          "value": 30
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "tooltip": true,
+        "color": "#FE2E2E",
+        "point": true
+      },
+      "encoding": {
+        "y": {
+          "field": "Fail_Percentage",
+          "type": "quantitative",
+          "scale": {
+            "zero": false
+          },
+          "axis": {
+            "title": "Failure(%)",
+            "titleFontSize": 14,
+            "titleColor": "#FE2E2E",
+            "labelAngle": 0,
+            "labelFontSize": 12,
+            "labelPadding": 15
+          }
+        }
+      }
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  }
+}

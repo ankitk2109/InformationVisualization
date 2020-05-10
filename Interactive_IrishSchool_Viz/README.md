@@ -34,5 +34,7 @@ __Interaction 2:__
 __Interaction 3:__
 * On a stacked bar graph, a selection filter called as select county is defined, where selected multiple counties will show the result of those selected counties that were resolved globally.
 
-## Output: After applying all the filters and an interactive dashboard is ready to visualize
+## Output Vizualization: 
+__After applying all the filters an interactive dashboard is ready to visualize__
 
+![Interactive Visualization Video](https://github.com/ankitk2109/InformationVisualization/blob/master/Interactive_IrishSchool_Viz/output/InteractiveGif.gif)

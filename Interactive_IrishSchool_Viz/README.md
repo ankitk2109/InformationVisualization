@@ -24,7 +24,7 @@ __Visualization 3:__
 ## Interactions:
 
 __Interaction 1:__
-* On a point map, a selection filter known as select gender is specified, which will show the performance of the corresponding category only when single clicked on the Gender field.
+* On a point map, a selection filter known as select_gender is specified, which will show the performance of the corresponding category only when single clicked on the Gender field.
 
 * The filter then binds to the legend and settles globally.
 
@@ -32,7 +32,7 @@ __Interaction 2:__
 * On a layered bar chart, a brush selection known as a form of interval is generated so that you can pick the number of students on the graph.
 
 __Interaction 3:__
-* On a stacked bar graph, a selection filter called as select county is defined, where selected multiple counties will show the result of those selected counties that were resolved globally.
+* On a stacked bar graph, a selection_filter called as select_county is defined, where selected multiple counties will show the result of those selected counties that were resolved globally.
 
 ## Output Vizualization: 
 __After applying all the filters an interactive dashboard is ready to visualize__

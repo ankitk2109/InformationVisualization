@@ -4,7 +4,7 @@ Interactive dashboard visualizatioon to analyse and explore Ireland's primary sc
 
 ## How to view the visualization?
 
-Please visit this https://vega.github.io/editor/#/custom/vega-lite website and paste the json file in code. section
+Please visit https://vega.github.io/editor/#/custom/vega-lite and paste the any json file in code section to view the visualization.
 
 __Visualization 1:__
 * With the aid of the topojson data sort, a geo-shaped map is initially built and, at the top, a point map is layered over with the latitude and longitude provided.

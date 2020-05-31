@@ -1,6 +1,6 @@
 # Irish School Explorer using Vega-Lite
 
-Interactive dashboard visualizatioon to analyse and explore Ireland's primary schools.
+Interactive dashboard visualization  to analyse and explore Ireland's primary schools.
 
 ## How to view the visualization?
 
